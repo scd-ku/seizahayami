@@ -104,6 +104,7 @@ body .download-card.accent small{color:#58704c}
         <div id="layerFilters" class="layer-grid">
           <label><input type="checkbox" data-layer="lines" checked><span>星座線・境界線</span></label>
           <label><input type="checkbox" data-layer="starNames" checked><span>星の名前</span></label>
+          <label><input type="checkbox" data-layer="schoolStarNames"><span>星の名前（小学校）</span></label>
           <label><input type="checkbox" data-layer="constellationNames" checked><span>星座名</span></label>
           <label><input type="checkbox" data-layer="ecliptic" checked><span>黄道</span></label>
           <label><input type="checkbox" data-layer="equator" checked><span>赤道</span></label>
@@ -195,6 +196,7 @@ body .download-card.accent small{color:#58704c}
             <li>観察する場所と日時を選びます。</li>
             <li>盤の内側をドラッグすると回転窓、外側をドラッグすると母盤が回ります。</li>
             <li>ホイールまたはピンチ操作で拡大・縮小します。星はマウスまたはタップで詳細を表示できます。</li>
+            <li>「星の名前（小学校）」をオンにすると、「星の名前」の設定にかかわらず、小学4年理科の公開資料で確認した恒星名だけを星図に表示します。</li>
             <li>スマートフォンでは方位自動合わせを利用できます。3D表示ではドラッグで視点を回転します。</li>
           </ol>
         </section>
@@ -206,6 +208,17 @@ body .download-card.accent small{color:#58704c}
             <li><a href="https://kitakaruizawa.net/rika/2024_0808-daisankaku.pdf" target="_blank" rel="noopener noreferrer">田中千尋「日々の理科3654号」：天の川と夏の大三角</a></li>
           </ul>
           <p class="help-credit">背景写真：田中千尋氏による「日々の理科3654号」より転載</p>
+        </section>
+        <section>
+          <h3>「星の名前（小学校）」の調査資料</h3>
+          <p>小学4年の教科書に関連する公開資料で確認できた名前をまとめています。教科書全ページの掲載名を網羅した一覧ではありません。</p>
+          <ul class="help-links">
+            <li><a href="https://edogawa.schoolweb.ne.jp/1310054/download/document/12278277?tm=20250429162516" target="_blank" rel="noopener noreferrer">大日本図書版に対応した小学校の評価規準（夏の星）</a></li>
+            <li><a href="https://ten.tokyo-shoseki.co.jp/tangenl/shou/10654/20536/" target="_blank" rel="noopener noreferrer">東京書籍『新編 新しい理科４』の単元リンク集（夏の星）</a></li>
+            <li><a href="https://www.kyoiku-shuppan.co.jp/textbook/shou/rika/document/ducu2/docu201/r2ws-4.html" target="_blank" rel="noopener noreferrer">教育出版『未来をひらく小学理科４』準拠資料（夏・冬の星）</a></li>
+            <li><a href="https://r6.gakuto-plus.jp/r4a01/" target="_blank" rel="noopener noreferrer">学校図書『みんなと学ぶ 小学校 理科４年』のQR資料（北極星・季節の星座）</a></li>
+            <li><a href="https://www.shinko-keirin.co.jp/keirinkan/sho/science/support/keyseat/data/rika_4nen3_03.pdf" target="_blank" rel="noopener noreferrer">啓林館の教師用指導書４年（冬の星）</a></li>
+          </ul>
         </section>
       </div>
     </div>
@@ -231,7 +244,7 @@ const groups={
  'おおぐま座':[[165.46,56.38,2.37,'メラク'],[165.93,61.75,1.79,'ドゥベ'],[178.46,53.69,2.44,'フェクダ'],[183.86,57.03,3.31,'メグレズ'],[193.51,55.96,1.77,'アリオト'],[200.98,54.93,2.27,'ミザール'],[206.89,49.31,1.86,'アルカイド']],
  'こぐま座':[[37.95,89.26,1.98,'北極星'],[222.68,74.16,2.08,'コカブ'],[230.18,71.83,4.32,''],[251.49,82.04,4.21,''],[236.01,77.79,4.32,''],[244.38,75.75,5.0,''],[263.05,86.59,4.36,'']],
  'おうし座':[[68.98,16.51,.87,'アルデバラン'],[81.57,28.61,1.65,'エルナト'],[56.87,24.11,3.62,''],[65.73,17.54,3.4,''],[67.15,19.18,3.53,'']],
- 'ふたご座':[[113.65,31.89,1.14,'ポルックス'],[116.33,28.03,1.93,'カストル'],[99.43,16.4,1.93,'アルヘナ'],[95.74,22.51,2.88,''],[109.52,16.54,3.06,'']],
+ 'ふたご座':[[113.65,31.89,1.93,'カストル'],[116.33,28.03,1.14,'ポルックス'],[99.43,16.4,1.93,'アルヘナ'],[95.74,22.51,2.88,''],[109.52,16.54,3.06,'']],
  'しし座':[[152.09,11.97,1.36,'レグルス'],[177.26,14.57,2.14,'デネボラ'],[168.53,20.52,2.56,'ゾスマ'],[154.99,19.84,2.01,'アルギエバ'],[146.46,23.77,3.43,'']],
  'みなみじゅうじ座':[[186.65,-63.1,.77,'アクルックス'],[191.93,-59.69,1.25,'ミモザ'],[183.79,-58.75,2.79,''],[187.79,-57.11,2.2,'']],
  'うしかい座':[[213.92,19.18,-.05,'アークトゥルス'],[221.25,27.07,2.37,'イザール'],[208.67,18.4,2.68,'ムフリッド'],[225.49,40.39,3.5,'ネッカル'],[218.02,38.31,3.03,'セギヌス'],[228.88,33.31,3.47,'']]
@@ -242,6 +255,47 @@ const ZODIAC_IDS=new Set(['Ari','Tau','Gem','Cnc','Leo','Vir','Lib','Sco','Sgr',
 const SCHOOL_ID_BY_NAME={'オリオン座':'Ori','さそり座':'Sco','カシオペヤ座':'Cas','はくちょう座':'Cyg','こと座':'Lyr','わし座':'Aql','おおぐま座':'UMa','こぐま座':'UMi','おうし座':'Tau','ふたご座':'Gem','しし座':'Leo','みなみじゅうじ座':'Cru','うしかい座':'Boo'};
 const STAR_FACTS={'ベテルギウス':[550,'赤色','#f09a76'],'ベラトリクス':[250,'青白色','#a9c9ff'],'ミンタカ':[1200,'青白色','#a9c9ff'],'アルニラム':[2000,'青白色','#a9c9ff'],'アルニタク':[1260,'青白色','#a9c9ff'],'リゲル':[860,'青白色','#b8d5ff'],'サイフ':[650,'青白色','#a9c9ff'],'アンタレス':[550,'赤色','#f07f62'],'ジュバ':[400,'青白色','#b6d2ff'],'シャウラ':[570,'青白色','#a9c9ff'],'サルガス':[300,'黄白色','#ffe3a0'],'カフ':[55,'黄白色','#ffe3a0'],'シェダル':[230,'橙色','#ffb16d'],'ナビ':[550,'青白色','#aacaff'],'ルクバー':[100,'青白色','#b4d0ff'],'セギン':[440,'青白色','#a9c9ff'],'デネブ':[2600,'青白色','#b8d5ff'],'サドル':[1800,'黄白色','#fff0b0'],'アルビレオ':[430,'橙色と青色','#ffc078'],'ベガ':[25,'白色','#eef5ff'],'アルタイル':[17,'白色','#f4f4ff'],'北極星':[430,'黄白色','#fff0b0'],'メラク':[80,'白色','#eef5ff'],'ドゥベ':[123,'橙色','#ffc083'],'ミザール':[83,'白色','#eef5ff'],'アルカイド':[104,'青白色','#b8d5ff'],'アルデバラン':[65,'橙色','#ffad6f'],'エルナト':[134,'青白色','#b8d5ff'],'ポルックス':[34,'橙色','#ffc080'],'カストル':[51,'白色','#eef5ff'],'アルヘナ':[109,'白色','#eef5ff'],'レグルス':[79,'青白色','#b8d5ff'],'デネボラ':[36,'白色','#eef5ff'],'ゾスマ':[58,'白色','#eef5ff'],'アルギエバ':[130,'橙色','#ffc080'],'アクルックス':[320,'青白色','#b8d5ff'],'ミモザ':[280,'青白色','#b8d5ff'],'アークトゥルス':[37,'橙色','#ffad6f'],'イザール':[200,'橙色と青色','#ffc078'],'ムフリッド':[37,'黄白色','#fff0b0'],'ネッカル':[225,'黄白色','#ffe3a0'],'セギヌス':[85,'白色','#eef5ff']};
 const $=s=>document.querySelector(s), svgEl=(tag,attrs={})=>{const e=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));return e};
+// 小4理科の公開教科書関連資料で確認した恒星名。出典はヘルプを参照。
+const SCHOOL_STAR_NAMES = new Set([
+  'ベガ', 'アルタイル', 'デネブ', 'アンタレス', '北極星',
+  'ベテルギウス', 'リゲル', 'シリウス', 'プロキオン',
+  'カペラ', 'アルデバラン', 'ポルックス', 'カストル',
+]);
+
+// 冬の学習資料にある恒星のうち、通常のカタログに未収録のもの。
+// 座標はSIMBADのJ2000（度）。距離は光年、明るさは視等級。
+const SCHOOL_EXTRA_STARS = {
+  'おおいぬ座': [[101.2872, -16.7161, -1.46, 'シリウス']],
+  'こいぬ座': [[114.8255, 5.2250, 0.37, 'プロキオン']],
+  'ぎょしゃ座': [[79.1723, 45.9980, 0.08, 'カペラ']],
+};
+Object.assign(STAR_FACTS, {
+  'シリウス': [8.6, '青白色', '#b8d5ff'],
+  'プロキオン': [11.5, '白色', '#eef5ff'],
+  'カペラ': [42.9, '黄色', '#ffe3a0'],
+});
+
+function shouldDrawStarName(name) {
+  if (!name) return false;
+  if (state.layers.has('schoolStarNames')) return SCHOOL_STAR_NAMES.has(name);
+  return state.layers.has('starNames');
+}
+
+function visibleStarGroups({ depth = false } = {}) {
+  const schoolCatalog = state.catalogs.has('school');
+  const schoolNames = state.layers.has('schoolStarNames');
+  const selected = Object.entries(groups).filter(([name]) => {
+    if ((schoolCatalog || (depth && !schoolNames)) && state.constellations.has(name)) return true;
+    const id = SCHOOL_ID_BY_NAME[name];
+    return schoolNames && (state.catalogs.has('all') ||
+      (state.catalogs.has('zodiac') && ZODIAC_IDS.has(id)));
+  });
+  if (schoolNames && (schoolCatalog || state.catalogs.has('all'))) {
+    selected.push(...Object.entries(SCHOOL_EXTRA_STARS));
+  }
+  return selected;
+}
+
 function pad(n){return String(n).padStart(2,'0')} function localValue(d){return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`}
 function init(){
  $('#dateInput').value=localValue(state.date);$('#timeInput').value=`${pad(state.date.getHours())}:${pad(state.date.getMinutes())}`;
@@ -347,7 +401,7 @@ function starDetailUrl(name){return `https://ja.wikipedia.org/w/index.php?search
 function positionStarTooltip(e){const tip=$('#starTooltip'),box=e.currentTarget?.getBoundingClientRect?.(),clientX=Number.isFinite(e.clientX)?e.clientX:(box?box.left+box.width/2:window.innerWidth/2),clientY=Number.isFinite(e.clientY)?e.clientY:(box?box.top+box.height/2:window.innerHeight/2),gap=14,pad=10,width=Math.min(260,window.innerWidth-pad*2),height=tip.offsetHeight||150;let left=clientX+gap;if(left+width>window.innerWidth-pad)left=clientX-width-gap;let top=clientY-height/2;top=Math.max(pad,Math.min(window.innerHeight-height-pad,top));tip.style.left=`${Math.max(pad,left)}px`;tip.style.top=`${top}px`}
 function showStarTooltip(e,s,fact){const tip=$('#starTooltip'),name=s[3];tip.innerHTML=`<b>${name}</b>地球からの距離：約${fact[0].toLocaleString('ja-JP')}光年<br>明るさ：${s[2]}等級<br><i style="background:${fact[2]}"></i>星の色：${fact[1]}<br><a href="${starDetailUrl(name)}" target="_blank" rel="noopener noreferrer">Wikipediaで詳しく見る ↗</a>`;tip.classList.add('show');positionStarTooltip(e)}
 function makeStarHotspot(svg,p,s,fact,r){const hit=svgEl('circle',{cx:p.x,cy:p.y,r,fill:'#fff','fill-opacity':.001,'pointer-events':'all','data-tooltip-hit':'true',tabindex:'0',role:'button','aria-label':`${s[3]}の説明を表示`,style:'cursor:pointer'});hit.addEventListener('pointerenter',e=>{if(e.pointerType!=='touch')showStarTooltip(e,s,fact)});hit.addEventListener('pointermove',e=>{if(e.pointerType!=='touch'&&$('#starTooltip').classList.contains('show'))positionStarTooltip(e)});hit.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();showStarTooltip(e,s,fact)});hit.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();showStarTooltip(e,s,fact)});hit.addEventListener('focus',e=>showStarTooltip(e,s,fact));hit.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showStarTooltip(e,s,fact)}});svg.append(hit)}
-function drawStarHotspots(svg){Object.values(groups).flat().forEach(s=>{const name=s[3],fact=STAR_FACTS[name];if(!name||!fact||!state.mags.has(magBin(s[2])))return;makeStarHotspot(svg,plateProjection(s[0],s[1]),s,fact,13)})}
+function drawStarHotspots(svg){visibleStarGroups().flatMap(([, stars]) => stars).forEach(s=>{const name=s[3],fact=STAR_FACTS[name];if(!name||!fact||!state.mags.has(magBin(s[2])))return;makeStarHotspot(svg,plateProjection(s[0],s[1]),s,fact,13)})}
 function project3D(x,y,z=0){const yaw=state.viewYaw*Math.PI/180,pitch=state.viewPitch*Math.PI/180,c=Math.cos(yaw),s=Math.sin(yaw),xr=x*c-y*s,yr=x*s+y*c,zr=z*state.depthScale;return{x:400+xr,y:535+yr*Math.cos(pitch)-zr*Math.sin(pitch),depth:yr*Math.sin(pitch)+zr*Math.cos(pitch)}}
 function rotatePlatePoint(p,angle=0){if(!angle)return p;const a=angle*Math.PI/180,c=Math.cos(a),s=Math.sin(a),x=p.x-400,y=p.y-400;return{x:400+x*c-y*s,y:400+x*s+y*c}}
 function plateTo3D(p,z=0,angle=0){const q=rotatePlatePoint(p,angle);return project3D(q.x-400,q.y-400,z)}
@@ -364,7 +418,7 @@ function draw3DPlateLayers(svg){
  if(state.layers.has('backgroundStars'))background.forEach(s=>{if(!state.mags.has(magBin(s[2])))return;const p=plateTo3D(plateProjection(s[0],s[1]));svg.append(svgEl('circle',{cx:p.x,cy:p.y,r:Math.max(.2,1.2-s[2]*.09),fill:'#dbe8ec',opacity:.38}))});
  const ids=selectedCatalogIds(),selected=id=>!ids||ids.has(id);if(state.layers.has('lines')){if(state.lineSource==='oae')Object.entries(IAU_LINES).forEach(([id,parts])=>{if(selected(id))parts.forEach(part=>line(curve3D(part),{stroke:'#73b6d7','stroke-width':.8,opacity:.8}))});else Object.entries(IAU_BOUNDS).forEach(([id,rings])=>{if(selected(id))rings.forEach(r=>line(curve3D(r),{stroke:'#b7cce1','stroke-width':.55,'stroke-dasharray':'3 3',opacity:.8},true))})}
  if(state.layers.has('constellationNames'))IAU_CONSTELLATIONS.forEach(c=>{if(!selected(c.id))return;constellationQueue.push({name:c.name,p:plateTo3D(plateProjection((c.ra+360)%360,c.dec)),size:state.catalogs.has('all')?4.5:6,color:'#74c9d5'})});
- if(state.catalogs.has('school'))Object.entries(groups).forEach(([name,stars])=>{if(!state.constellations.has(name))return;stars.forEach(s=>{if(!state.mags.has(magBin(s[2])))return;const p=plateTo3D(plateProjection(s[0],s[1])),fact=STAR_FACTS[s[3]];svg.append(svgEl('circle',{cx:p.x,cy:p.y,r:Math.max(1.5,4-s[2]*.55),fill:fact?.[2]||'#fff3c4',stroke:'#fff','stroke-width':.4}));if(state.layers.has('starNames')&&s[3])appendStarLabel(svg,s[3],p.x,p.y,starLabelBoxes,5.2)})});
+ visibleStarGroups().forEach(([,stars])=>{stars.forEach(s=>{if(!state.mags.has(magBin(s[2])))return;const p=plateTo3D(plateProjection(s[0],s[1])),fact=STAR_FACTS[s[3]];svg.append(svgEl('circle',{cx:p.x,cy:p.y,r:Math.max(1.5,4-s[2]*.55),fill:fact?.[2]||'#fff3c4',stroke:'#fff','stroke-width':.4}));if(shouldDrawStarName(s[3]))appendStarLabel(svg,s[3],p.x,p.y,starLabelBoxes,5.2)})});
  const horizon=horizonWindow(loc),outer=[];for(let a=0;a<=360;a+=4){const r=a*Math.PI/180;outer.push(plateTo3D({x:400+340*Math.cos(r),y:400+340*Math.sin(r)}))}const hp=horizon.points.map(p=>plateTo3D(p));if(state.layers.has('window'))svg.append(svgEl('path',{d:`${path3D(outer,true)} ${path3D(hp,true)}`,fill:'#fff','fill-opacity':.16,'fill-rule':'evenodd',stroke:'#65d1d3','stroke-width':1.2}));
  if(state.layers.has('azimuth')){[30,60].forEach(alt=>{const pts=[];for(let az=0;az<=360;az+=4)pts.push(plateTo3D(horizontalToPlate(alt,az,loc)));line(pts,{stroke:'#65d1d3','stroke-width':.75,opacity:.8},true);const p=plateTo3D(horizontalToPlate(alt,180,loc)),t=svgEl('text',{x:p.x+4,y:p.y-3,fill:'#65d1d3','font-size':6});t.textContent=`${alt}°`;svg.append(t)});for(let az=0;az<360;az+=30){const pts=[];for(let alt=0;alt<=90;alt+=4)pts.push(plateTo3D(horizontalToPlate(alt,az,loc)));line(pts,{stroke:'#65d1d3','stroke-width':az%90===0?1.1:.55,opacity:az%90===0?.85:.45})}[[0,'北'],[90,'東'],[180,'南'],[270,'西']].forEach(([az,n])=>{const p=plateTo3D(horizontalToPlate(0,az,loc)),t=svgEl('text',{x:p.x,y:p.y-5,fill:'#65d1d3','font-size':8,'font-weight':'bold','text-anchor':'middle'});t.textContent=n;svg.append(t)})}
  if(state.layers.has('dateScale')){const year=state.date.getFullYear(),days=(new Date(year+1,0,1)-new Date(year,0,1))/86400000,months=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];for(let d=0;d<days;d+=5){const a=(d/days*360-90)*Math.PI/180,p=plateTo3D({x:400+337*Math.cos(a),y:400+337*Math.sin(a)}),q=plateTo3D({x:400+345*Math.cos(a),y:400+345*Math.sin(a)});svg.append(svgEl('line',{x1:p.x,y1:p.y,x2:q.x,y2:q.y,stroke:'#dbe8ec','stroke-width':d%10===0?1:.45}))}months.forEach((n,m)=>{const d=(new Date(year,m,1)-new Date(year,0,1))/86400000,a=((d+12)/days*360-90)*Math.PI/180,p=plateTo3D({x:400+344*Math.cos(a),y:400+344*Math.sin(a)}),t=svgEl('text',{x:p.x,y:p.y,fill:'#dbe8ec','font-size':5.5,'text-anchor':'middle'});t.textContent=n;svg.append(t)})}
@@ -377,8 +431,8 @@ function draw3DScene(svg){
  const ring=[];for(let a=0;a<=360;a+=4){const r=a*Math.PI/180;ring.push(project3D(345*Math.cos(r),345*Math.sin(r),0))}svg.append(svgEl('path',{d:`M${ring.map(p=>`${p.x.toFixed(1)},${p.y.toFixed(1)}`).join('L')}Z`,fill:'#0b2033','fill-opacity':.9,stroke:'#78909d','stroke-width':2}));
  [115,230,345].forEach(rad=>{const pts=[];for(let a=0;a<=360;a+=6){const r=a*Math.PI/180;pts.push(project3D(rad*Math.cos(r),rad*Math.sin(r),0))}svg.append(svgEl('path',{d:`M${pts.map(p=>`${p.x.toFixed(1)},${p.y.toFixed(1)}`).join('L')}Z`,fill:'none',stroke:'#8ab7ca','stroke-width':.7,opacity:.25}))});for(let a=0;a<360;a+=30){const r=a*Math.PI/180,p=project3D(345*Math.cos(r),345*Math.sin(r),0),q=project3D(0,0,0);svg.append(svgEl('line',{x1:q.x,y1:q.y,x2:p.x,y2:p.y,stroke:'#9cc5d4','stroke-width':.6,opacity:.18}))}draw3DPlateLayers(svg);
  const polaris=plateProjection(37.95,89.26),axisX=polaris.x-400,axisY=polaris.y-400,axis0=project3D(axisX,axisY,0),axis1=project3D(axisX,axisY,3000);svg.append(svgEl('line',{x1:axis0.x,y1:axis0.y,x2:axis1.x,y2:axis1.y,stroke:'#f5cf68','stroke-width':2}));for(let ly=0;ly<=3000;ly+=500){const p=project3D(axisX,axisY,ly),t=svgEl('text',{x:p.x+9,y:p.y+3,fill:'#f5cf68','font-size':7,'font-weight':'bold'});t.textContent=ly===0?'北極星・0光年':`${ly.toLocaleString('ja-JP')}光年`;svg.append(svgEl('line',{x1:p.x-5,y1:p.y,x2:p.x+5,y2:p.y,stroke:'#f5cf68','stroke-width':1}),t)}const title=svgEl('text',{x:axis1.x,y:axis1.y-12,'text-anchor':'middle',fill:'#f5cf68','font-size':9,'font-weight':'bold'});title.textContent='地球からの距離';svg.append(title);
- const stars=[];Object.entries(groups).forEach(([name,list])=>{if(!state.constellations.has(name))return;list.forEach(s=>{const fact=STAR_FACTS[s[3]];if(!fact||!state.mags.has(magBin(s[2])))return;const b=plateProjection(s[0],s[1]),base=project3D(b.x-400,b.y-400,0),top=project3D(b.x-400,b.y-400,fact[0]);stars.push({s,fact,base,top})})});
- const topLabelBoxes=stars.map(({top,s})=>{const r=Math.max(4,7-s[2]*.75);return{x:top.x-r,y:top.y-r,w:r*2,h:r*2}});stars.forEach(({base,top})=>svg.append(svgEl('line',{x1:base.x,y1:base.y,x2:top.x,y2:top.y,stroke:'#fff','stroke-width':.8,'stroke-dasharray':'2 4',opacity:.7})));stars.sort((a,b)=>a.top.depth-b.top.depth).forEach(({s,fact,base,top})=>{svg.append(svgEl('circle',{cx:base.x,cy:base.y,r:2,fill:'#fff',opacity:.65}),svgEl('circle',{cx:top.x,cy:top.y,r:Math.max(3,7-s[2]*.75),fill:fact[2],stroke:'#fff','stroke-width':1}));if(state.layers.has('starNames'))appendStarLabel(svg,s[3],top.x,top.y,topLabelBoxes,5.8,'#edf6fa')});stars.forEach(({s,fact,top})=>add3DTooltip(svg,top,s,fact));
+ const stars=[];visibleStarGroups({ depth: true }).forEach(([,list])=>{list.forEach(s=>{const fact=STAR_FACTS[s[3]];if(!fact||!state.mags.has(magBin(s[2])))return;const b=plateProjection(s[0],s[1]),base=project3D(b.x-400,b.y-400,0),top=project3D(b.x-400,b.y-400,fact[0]);stars.push({s,fact,base,top})})});
+ const topLabelBoxes=stars.map(({top,s})=>{const r=Math.max(4,7-s[2]*.75);return{x:top.x-r,y:top.y-r,w:r*2,h:r*2}});stars.forEach(({base,top})=>svg.append(svgEl('line',{x1:base.x,y1:base.y,x2:top.x,y2:top.y,stroke:'#fff','stroke-width':.8,'stroke-dasharray':'2 4',opacity:.7})));stars.sort((a,b)=>a.top.depth-b.top.depth).forEach(({s,fact,base,top})=>{svg.append(svgEl('circle',{cx:base.x,cy:base.y,r:2,fill:'#fff',opacity:.65}),svgEl('circle',{cx:top.x,cy:top.y,r:Math.max(3,7-s[2]*.75),fill:fact[2],stroke:'#fff','stroke-width':1}));if(shouldDrawStarName(s[3]))appendStarLabel(svg,s[3],top.x,top.y,topLabelBoxes,5.8,'#edf6fa')});stars.forEach(({s,fact,top})=>add3DTooltip(svg,top,s,fact));
  const note=svgEl('text',{x:400,y:775,'text-anchor':'middle',fill:'#a8bac4','font-size':8});note.textContent='母盤のどこでもドラッグ：3D空間を回転　／　ホイール・ピンチ：拡大縮小　／　距離は0〜3,000光年';svg.append(note);$('#viewerTitle').textContent=`${locations[state.location].name}の恒星距離 3D`;$('#interactionHelp').innerHTML=`母盤内・外をドラッグ：3D空間を回転　／　ホイール・2本指ピンチ：拡大縮小 <b id="zoomLabel">${Math.round(state.zoom*100)}%</b>`
 }
 function render(){
@@ -391,11 +445,11 @@ function render(){
  if(state.layers.has('ecliptic'))addCurve(svg,eclipticCoords(),loc,{stroke:'#f0bf54','stroke-width':1.4,'stroke-dasharray':'2 5',opacity:.9});
  if(state.layers.has('meridian'))svg.append(svgEl('path',{d:'M400 70 Q400 400 400 730',fill:'none',stroke:'#bf87dc','stroke-width':1,'stroke-dasharray':'7 5',opacity:.7}));
  if(state.layers.has('backgroundStars'))background.forEach(s=>{if(!state.mags.has(magBin(s[2])))return;visible++;const p=plateProjection(s[0],s[1]),r=Math.max(.25,1.45-s[2]*.115);svg.append(svgEl('circle',{cx:p.x,cy:p.y,r,fill:'#dbe8ec',opacity:Math.max(.22,1-s[2]/13)}))});
- if(state.catalogs.has('school'))Object.entries(groups).forEach(([name,stars])=>{if(!state.constellations.has(name))return;stars.forEach(s=>{if(!state.mags.has(magBin(s[2])))return;const p=plateProjection(s[0],s[1]),r=Math.max(4,5.5-s[2]*.5);starLabelBoxes.push({x:p.x-r,y:p.y-r,w:r*2,h:r*2})})});
+ visibleStarGroups().forEach(([,stars])=>{stars.forEach(s=>{if(!state.mags.has(magBin(s[2])))return;const p=plateProjection(s[0],s[1]),r=Math.max(4,5.5-s[2]*.5);starLabelBoxes.push({x:p.x-r,y:p.y-r,w:r*2,h:r*2})})});
  drawIAUCatalog(svg,constellationLabelQueue);if(state.catalogs.has('dso'))drawDSOs(svg);
- if(state.catalogs.has('school'))Object.entries(groups).forEach(([name,stars])=>{if(!state.constellations.has(name))return;const pts=stars.map(s=>({...plateProjection(s[0],s[1]),s}));pts.forEach(p=>{if(!state.mags.has(magBin(p.s[2])))return;visible++;const starColor=STAR_FACTS[p.s[3]]?.[2]||'#fff3c4';svg.append(svgEl('circle',{cx:p.x,cy:p.y,r:Math.max(2,4.6-p.s[2]*.7),fill:starColor,stroke:'#fff','stroke-width':.5}));if(state.layers.has('starNames')&&p.s[3])appendStarLabel(svg,p.s[3],p.x,p.y,starLabelBoxes,6.2)});if(state.layers.has('constellationNames')&&pts.length){const p=pts[Math.floor(pts.length/2)];constellationLabelQueue.push({name,p:{x:p.x,y:p.y+16},size:7,color:'#6bd0d2'})}});
+ visibleStarGroups().forEach(([name,stars])=>{const pts=stars.map(s=>({...plateProjection(s[0],s[1]),s}));pts.forEach(p=>{if(!state.mags.has(magBin(p.s[2])))return;visible++;const starColor=STAR_FACTS[p.s[3]]?.[2]||'#fff3c4';svg.append(svgEl('circle',{cx:p.x,cy:p.y,r:Math.max(2,4.6-p.s[2]*.7),fill:starColor,stroke:'#fff','stroke-width':.5}));if(shouldDrawStarName(p.s[3]))appendStarLabel(svg,p.s[3],p.x,p.y,starLabelBoxes,6.2)});if(state.layers.has('constellationNames')&&name in groups&&pts.length){const p=pts[Math.floor(pts.length/2)];constellationLabelQueue.push({name,p:{x:p.x,y:p.y+16},size:7,color:'#6bd0d2'})}});
  constellationLabelQueue.forEach(l=>appendConstellationLabel(svg,l.name,l.p.x,l.p.y,starLabelBoxes,l.size,l.color));
- if(state.catalogs.has('school'))drawStarHotspots(svg);
+ drawStarHotspots(svg);
  const plateClip=svgEl('clipPath',{id:'plateDiscClip'});plateClip.append(svgEl('circle',{cx:400,cy:400,r:340}));defs.append(plateClip);const plateContent=svgEl('g',{id:'starPlateContent',transform:`rotate(${(state.plateRotation+state.compassRotation)%360} 400 400)`,'clip-path':'url(#plateDiscClip)'});[...svg.children].filter(el=>el.tagName.toLowerCase()!=='defs').forEach(el=>plateContent.append(el));svg.append(plateContent);
  drawPlanisphereDial(svg,loc);
  if($('#visibleCount'))$('#visibleCount').textContent=`${visible.toLocaleString('ja-JP')} stars`;if($('#sunState'))$('#sunState').textContent=state.date.getHours()>=18||state.date.getHours()<6?'観察に適した夜の時間帯':'日没後の観察がおすすめ';
