@@ -103,12 +103,12 @@ body .download-card.accent small{color:#58704c}
         <div class="panel-title compact"><span>03</span><h2>星図の表示</h2></div>
         <div id="layerFilters" class="layer-grid">
           <label><input type="checkbox" data-layer="lines" checked><span>星座線・境界線</span></label>
-          <label><input type="checkbox" data-layer="starNames" checked><span>星の名前</span></label>
-          <label><input type="checkbox" data-layer="schoolStarNames"><span>星の名前（小学校）</span></label>
+          <label><input type="checkbox" data-layer="starNames"><span>星の名前</span></label>
+          <label><input type="checkbox" data-layer="schoolStarNames" checked><span>星の名前（小学校）</span></label>
           <label><input type="checkbox" data-layer="constellationNames" checked><span>星座名</span></label>
-          <label><input type="checkbox" data-layer="ecliptic" checked><span>黄道</span></label>
-          <label><input type="checkbox" data-layer="equator" checked><span>赤道</span></label>
-          <label><input type="checkbox" data-layer="meridian" checked><span>子午線</span></label>
+          <label><input type="checkbox" data-layer="ecliptic"><span>黄道</span></label>
+          <label><input type="checkbox" data-layer="equator"><span>赤道</span></label>
+          <label><input type="checkbox" data-layer="meridian"><span>子午線</span></label>
           <label><input type="checkbox" data-layer="milkyway" checked><span>天の川</span></label>
           <label><input type="checkbox" data-layer="backgroundStars" checked><span>背景の微光星</span></label>
           <label><input type="checkbox" data-layer="dateScale" checked><span>母盤の月日</span></label>
@@ -250,7 +250,7 @@ const groups={
  'うしかい座':[[213.92,19.18,-.05,'アークトゥルス'],[221.25,27.07,2.37,'イザール'],[208.67,18.4,2.68,'ムフリッド'],[225.49,40.39,3.5,'ネッカル'],[218.02,38.31,3.03,'セギヌス'],[228.88,33.31,3.47,'']]
 };
 const lineOrder={'オリオン座':[[0,1],[0,2],[1,2],[2,3],[3,4],[4,6],[2,5]],'さそり座':[[1,0],[0,2],[2,3],[3,4]],'カシオペヤ座':[[0,1],[1,2],[2,3],[3,4]],'はくちょう座':[[0,1],[1,2],[3,1],[1,4]],'こと座':[[0,2],[2,3],[3,1],[1,0]],'わし座':[[1,0],[0,2]],'おおぐま座':[[0,1],[0,2],[1,3],[2,3],[3,4],[4,5],[5,6]],'こぐま座':[[0,3],[3,4],[4,5],[5,1],[1,2],[2,6],[6,5]],'おうし座':[[0,3],[3,4],[4,2],[4,1]],'ふたご座':[[0,1],[0,4],[1,3],[3,2]],'しし座':[[0,3],[3,4],[3,2],[2,1]],'みなみじゅうじ座':[[0,2],[1,3]],'うしかい座':[[0,1],[0,2],[1,4],[4,3],[3,5],[5,1]]};
-let state={location:'takamatsu',date:new Date(),mags:new Set([...Array(11).keys()]),constellations:new Set(Object.keys(groups)),layers:new Set(['lines','starNames','constellationNames','ecliptic','equator','meridian','milkyway','backgroundStars','dateScale','window','azimuth','timeScale']),catalogs:new Set(['school']),lineSource:'oae',rotationMode:'window',plateRotation:0,windowRotation:0,compassRotation:0,zoom:1,threeD:false,viewYaw:0,viewPitch:58,depthScale:.135};
+let state={location:'takamatsu',date:new Date(),mags:new Set([...Array(11).keys()]),constellations:new Set(Object.keys(groups)),layers:new Set(['lines','schoolStarNames','constellationNames','milkyway','backgroundStars','dateScale','window','azimuth','timeScale']),catalogs:new Set(['school']),lineSource:'oae',rotationMode:'window',plateRotation:0,windowRotation:0,compassRotation:0,zoom:1,threeD:false,viewYaw:0,viewPitch:58,depthScale:.135};
 const ZODIAC_IDS=new Set(['Ari','Tau','Gem','Cnc','Leo','Vir','Lib','Sco','Sgr','Cap','Aqr','Psc']);
 const SCHOOL_ID_BY_NAME={'オリオン座':'Ori','さそり座':'Sco','カシオペヤ座':'Cas','はくちょう座':'Cyg','こと座':'Lyr','わし座':'Aql','おおぐま座':'UMa','こぐま座':'UMi','おうし座':'Tau','ふたご座':'Gem','しし座':'Leo','みなみじゅうじ座':'Cru','うしかい座':'Boo'};
 const STAR_FACTS={'ベテルギウス':[550,'赤色','#f09a76'],'ベラトリクス':[250,'青白色','#a9c9ff'],'ミンタカ':[1200,'青白色','#a9c9ff'],'アルニラム':[2000,'青白色','#a9c9ff'],'アルニタク':[1260,'青白色','#a9c9ff'],'リゲル':[860,'青白色','#b8d5ff'],'サイフ':[650,'青白色','#a9c9ff'],'アンタレス':[550,'赤色','#f07f62'],'ジュバ':[400,'青白色','#b6d2ff'],'シャウラ':[570,'青白色','#a9c9ff'],'サルガス':[300,'黄白色','#ffe3a0'],'カフ':[55,'黄白色','#ffe3a0'],'シェダル':[230,'橙色','#ffb16d'],'ナビ':[550,'青白色','#aacaff'],'ルクバー':[100,'青白色','#b4d0ff'],'セギン':[440,'青白色','#a9c9ff'],'デネブ':[2600,'青白色','#b8d5ff'],'サドル':[1800,'黄白色','#fff0b0'],'アルビレオ':[430,'橙色と青色','#ffc078'],'ベガ':[25,'白色','#eef5ff'],'アルタイル':[17,'白色','#f4f4ff'],'北極星':[430,'黄白色','#fff0b0'],'メラク':[80,'白色','#eef5ff'],'ドゥベ':[123,'橙色','#ffc083'],'ミザール':[83,'白色','#eef5ff'],'アルカイド':[104,'青白色','#b8d5ff'],'アルデバラン':[65,'橙色','#ffad6f'],'エルナト':[134,'青白色','#b8d5ff'],'ポルックス':[34,'橙色','#ffc080'],'カストル':[51,'白色','#eef5ff'],'アルヘナ':[109,'白色','#eef5ff'],'レグルス':[79,'青白色','#b8d5ff'],'デネボラ':[36,'白色','#eef5ff'],'ゾスマ':[58,'白色','#eef5ff'],'アルギエバ':[130,'橙色','#ffc080'],'アクルックス':[320,'青白色','#b8d5ff'],'ミモザ':[280,'青白色','#b8d5ff'],'アークトゥルス':[37,'橙色','#ffad6f'],'イザール':[200,'橙色と青色','#ffc078'],'ムフリッド':[37,'黄白色','#fff0b0'],'ネッカル':[225,'黄白色','#ffe3a0'],'セギヌス':[85,'白色','#eef5ff']};
@@ -259,7 +259,7 @@ const $=s=>document.querySelector(s), svgEl=(tag,attrs={})=>{const e=document.cr
 const SCHOOL_STAR_NAMES = new Set([
   'ベガ', 'アルタイル', 'デネブ', 'アンタレス', '北極星',
   'ベテルギウス', 'リゲル', 'シリウス', 'プロキオン',
-  'カペラ', 'アルデバラン', 'ポルックス', 'カストル',
+  'カペラ', 'アルデバラン', 'ポルックス', 'カストル', 'アークトゥルス',
 ]);
 
 // 冬の学習資料にある恒星のうち、通常のカタログに未収録のもの。
