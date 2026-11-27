@@ -397,7 +397,49 @@ const background=backgroundStars();
 function catalogPath(coords){let d='',last=null;coords.forEach(([ra,dec])=>{const p=plateProjection((ra+360)%360,dec),jump=last&&Math.hypot(p.x-last.x,p.y-last.y)>120;d+=`${!last||jump?'M':'L'}${p.x.toFixed(1)},${p.y.toFixed(1)} `;last=p});return d}
 function drawIAUCatalog(svg,labelQueue=[]){let ids=null;const schoolIds=new Set();if(!state.catalogs.has('all')){ids=new Set();if(state.catalogs.has('zodiac'))ZODIAC_IDS.forEach(id=>ids.add(id));if(state.catalogs.has('school'))state.constellations.forEach(n=>{const id=SCHOOL_ID_BY_NAME[n];if(id){ids.add(id);schoolIds.add(id)}})}if(ids&&ids.size===0)return;const selected=id=>!ids||ids.has(id);if(state.layers.has('lines')){if(state.lineSource==='oae')Object.entries(IAU_LINES).forEach(([id,parts])=>{if(!selected(id))return;parts.forEach(line=>svg.append(svgEl('path',{d:catalogPath(line),fill:'none',stroke:'#73b6d7','stroke-width':.85,opacity:.72}))) });else Object.entries(IAU_BOUNDS).forEach(([id,rings])=>{if(!selected(id))return;rings.forEach(ring=>svg.append(svgEl('path',{d:catalogPath(ring)+'Z',fill:'none',stroke:'#b7cce1','stroke-width':.55,'stroke-dasharray':'3 3',opacity:.8})))})}if(state.layers.has('constellationNames'))IAU_CONSTELLATIONS.forEach(c=>{if(!selected(c.id)||schoolIds.has(c.id))return;labelQueue.push({name:c.name,p:plateProjection((c.ra+360)%360,c.dec),size:state.catalogs.has('all')?4.8:6.5,color:'#89bbcf'})})}
 function drawDSOs(svg){const names={'NGC 224':'M31 アンドロメダ銀河','NGC 1976':'M42 オリオン大星雲','M 45':'すばる','NGC 2632':'プレセペ星団','NGC 869':'二重星団 h','NGC 884':'二重星団 χ','NGC 5139':'ω星団','NGC 104':'きょしちょう座47'};BRIGHT_DSOS.forEach(d=>{const p=plateProjection((d.ra+360)%360,d.dec),cluster=['oc','gc'].includes(d.type),mark=svgEl(cluster?'circle':'path',cluster?{cx:p.x,cy:p.y,r:2.5,fill:'none',stroke:'#f3a9c5','stroke-width':1}:{d:`M${p.x} ${p.y-3}L${p.x+3} ${p.y}L${p.x} ${p.y+3}L${p.x-3} ${p.y}Z`,fill:'none',stroke:'#f3a9c5','stroke-width':1});svg.append(mark);const t=svgEl('text',{x:p.x+4,y:p.y-3,fill:'#f3a9c5','font-size':6});t.textContent=names[d.id]||d.id;svg.append(t)})}
-function starDetailUrl(name){return `https://ja.wikipedia.org/w/index.php?search=${encodeURIComponent(`${name} 恒星`)}`}
+// 表示名とWikipediaの正式な記事名が異なる恒星。
+const STAR_WIKIPEDIA_TITLES = {
+  'ベラトリクス': 'オリオン座ガンマ星',
+  'ミンタカ': 'オリオン座デルタ星',
+  'アルニラム': 'オリオン座イプシロン星',
+  'アルニタク': 'オリオン座ゼータ星',
+  'サイフ': 'オリオン座カッパ星',
+  'ジュバ': 'さそり座デルタ星',
+  'シャウラ': 'さそり座ラムダ星',
+  'サルガス': 'さそり座シータ星',
+  'カフ': 'カシオペヤ座ベータ星',
+  'シェダル': 'カシオペヤ座アルファ星',
+  'ナビ': 'カシオペヤ座ガンマ星',
+  'ルクバー': 'カシオペヤ座デルタ星',
+  'セギン': 'カシオペヤ座イプシロン星',
+  'サドル': 'はくちょう座ガンマ星',
+  '北極星': 'ポラリス (恒星)',
+  'メラク': 'おおぐま座ベータ星',
+  'ドゥベ': 'おおぐま座アルファ星',
+  'アルカイド': 'おおぐま座イータ星',
+  'エルナト': 'おうし座ベータ星',
+  'ポルックス': 'ポルックス (恒星)',
+  'カストル': 'カストル (恒星)',
+  'アルヘナ': 'ふたご座ガンマ星',
+  'ゾスマ': 'しし座デルタ星',
+  'アルギエバ': 'しし座ガンマ星',
+  'アクルックス': 'みなみじゅうじ座アルファ星',
+  'ミモザ': 'みなみじゅうじ座ベータ星',
+  'イザール': 'うしかい座イプシロン星',
+  'ムフリッド': 'うしかい座イータ星',
+  'ネッカル': 'うしかい座ベータ星',
+  'セギヌス': 'うしかい座ガンマ星',
+  'カペラ': 'カペラ (恒星)',
+  'フェクダ': 'おおぐま座ガンマ星',
+  'メグレズ': 'おおぐま座デルタ星',
+  'アリオト': 'おおぐま座イプシロン星',
+  'コカブ': 'こぐま座ベータ星',
+};
+
+function starDetailUrl(name) {
+  const title = STAR_WIKIPEDIA_TITLES[name] ?? name;
+  return `https://ja.wikipedia.org/wiki/${encodeURIComponent(title.replaceAll(' ', '_'))}`;
+}
 function positionStarTooltip(e){const tip=$('#starTooltip'),box=e.currentTarget?.getBoundingClientRect?.(),clientX=Number.isFinite(e.clientX)?e.clientX:(box?box.left+box.width/2:window.innerWidth/2),clientY=Number.isFinite(e.clientY)?e.clientY:(box?box.top+box.height/2:window.innerHeight/2),gap=14,pad=10,width=Math.min(260,window.innerWidth-pad*2),height=tip.offsetHeight||150;let left=clientX+gap;if(left+width>window.innerWidth-pad)left=clientX-width-gap;let top=clientY-height/2;top=Math.max(pad,Math.min(window.innerHeight-height-pad,top));tip.style.left=`${Math.max(pad,left)}px`;tip.style.top=`${top}px`}
 function showStarTooltip(e,s,fact){const tip=$('#starTooltip'),name=s[3];tip.innerHTML=`<b>${name}</b>地球からの距離：約${fact[0].toLocaleString('ja-JP')}光年<br>明るさ：${s[2]}等級<br><i style="background:${fact[2]}"></i>星の色：${fact[1]}<br><a href="${starDetailUrl(name)}" target="_blank" rel="noopener noreferrer">Wikipediaで詳しく見る ↗</a>`;tip.classList.add('show');positionStarTooltip(e)}
 function makeStarHotspot(svg,p,s,fact,r){const hit=svgEl('circle',{cx:p.x,cy:p.y,r,fill:'#fff','fill-opacity':.001,'pointer-events':'all','data-tooltip-hit':'true',tabindex:'0',role:'button','aria-label':`${s[3]}の説明を表示`,style:'cursor:pointer'});hit.addEventListener('pointerenter',e=>{if(e.pointerType!=='touch')showStarTooltip(e,s,fact)});hit.addEventListener('pointermove',e=>{if(e.pointerType!=='touch'&&$('#starTooltip').classList.contains('show'))positionStarTooltip(e)});hit.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();showStarTooltip(e,s,fact)});hit.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();showStarTooltip(e,s,fact)});hit.addEventListener('focus',e=>showStarTooltip(e,s,fact));hit.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showStarTooltip(e,s,fact)}});svg.append(hit)}
